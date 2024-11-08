@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to College Timetable Generator</h1>
+<p>Use the navigation menu to manage branches, divisions, batches, subjects, teachers, rooms, and student electives.</p>
+<a href="{% url 'generate_timetable' %}" class="button">Generate Timetable</a>
+{% endblock %}

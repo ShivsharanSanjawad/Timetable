@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Conflicts</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Conflict Resolution</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Timetable Entry</th>
+            <th>Conflict Type</th>
+            <th>Resolution Status</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for conflict in conflicts %}
+        <tr>
+            <td>{{ conflict.timetable_entry }}</td>
+            <td>{{ conflict.conflict_type }}</td>
+            <td>{{ conflict.resolution_status }}</td>
+            <td>{{ conflict.notes }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Student Electives</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Student Elective</button>
+</form>
+<ul>
+    {% for student_elective in student_electives %}
+    <li>{{ student_elective.student_name }} - {{ student_elective.elective.name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

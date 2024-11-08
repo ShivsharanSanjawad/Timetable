@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Timetable</h1>
+
+<h2>Generated Timetable</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Division</th>
+            <th>Day</th>
+            <th>Time Slot</th>
+            <th>Subject</th>
+            <th>Teacher</th>
+            <th>Room</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in timetable %}
+        <tr>
+            <td>{{ entry.division.name }}</td>
+            <td>{{ entry.day }}</td>
+            <td>{{ entry.time_slot }}</td>
+            <td>{{ entry.subject.name }}</td>
+            <td>{{ entry.teacher.name }}</td>
+            <td>{{ entry.room.name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Conflicts</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Timetable Entry</th>
+            <th>Conflict Type</th>
+            <th>Resolution Status</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for conflict in conflicts %}
+        <tr>
+            <td>{{ conflict.timetable_entry }}</td>
+            <td>{{ conflict.conflict_type }}</td>
+            <td>{{ conflict.resolution_status }}</td>
+            <td>{{ conflict.notes }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'generate_timetable' %}" class="button">Generate New Timetable</a>
+{% endblock %}

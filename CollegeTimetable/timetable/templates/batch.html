@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Batches</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Batch</button>
+</form>
+<ul>
+    {% for batch in batches %}
+    <li>{{ batch.name }} ({{ batch.division.name }} - {{ batch.division.branch.name }})</li>
+    {% endfor %}
+</ul>
+{% endblock %}

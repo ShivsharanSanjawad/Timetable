@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Teachers</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Teacher</button>
+</form>
+<ul>
+    {% for teacher in teachers %}
+    <li>{{ teacher.name }} - Subjects: {% for subject in teacher.subjects.all %}{{ subject.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

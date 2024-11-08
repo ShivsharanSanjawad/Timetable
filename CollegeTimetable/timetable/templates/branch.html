@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Branches</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Branch</button>
+</form>
+<ul>
+    {% for branch in branches %}
+    <li>{{ branch.name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

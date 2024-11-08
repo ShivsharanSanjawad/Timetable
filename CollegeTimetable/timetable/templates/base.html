@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}College Timetable Generator{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">College</span> Timetable Generator</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="{% url 'landing' %}">Home</a></li>
+                    <li><a href="{% url 'branch' %}">Branches</a></li>
+                    <li><a href="{% url 'division' %}">Divisions</a></li>
+                    <li><a href="{% url 'batch' %}">Batches</a></li>
+                    <li><a href="{% url 'subject' %}">Subjects</a></li>
+                    <li><a href="{% url 'teacher' %}">Teachers</a></li>
+                    <li><a href="{% url 'room' %}">Rooms</a></li>
+                    <li><a href="{% url 'student_elective' %}">Electives</a></li>
+                    <li><a href="{% url 'timetable' %}">Timetable</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2023 College Timetable Generator</p>
+    </footer>
+</body>
+</html>

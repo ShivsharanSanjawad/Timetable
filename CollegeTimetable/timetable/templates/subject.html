@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Subjects</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <!-- Adding the is_lab checkbox -->
+    <label for="id_is_lab">Is this a lab subject?</label>
+    <input type="checkbox" name="is_lab" id="id_is_lab" {% if form.is_lab.value %}checked{% endif %}>
+    
+    <button type="submit">Add Subject</button>
+</form>
+
+<ul>
+    {% for subject in subjects %}
+    <li>{{ subject.name }} ({{ subject.branch.name }}) - {% if subject.is_mandatory %}Mandatory{% else %}Elective{% endif %}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
